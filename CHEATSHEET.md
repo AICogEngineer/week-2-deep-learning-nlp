@@ -3,11 +3,11 @@
 
 ## Weekly Overview
 
-This week covered _____. By the end, trainees can:
-- _____
-- _____
-- _____
-- _____
+This week covered Deep Learning NLP. By the end, trainees can:
+- Embedding
+- Recurrent Neural Networks
+- Encoding
+- Transformers
 
 ---
 
@@ -15,26 +15,26 @@ This week covered _____. By the end, trainees can:
 
 | Concept | Definition | Key Use Case |
 |---------|------------|--------------|
-| TensorBoard | _____ | _____ |
-| Autoencoder | _____ | _____ |
-| Reconstruction Loss | _____ | _____ |
-| Latent Space | _____ | _____ |
-| Backpropagation | _____ | _____ |
-| Gradient Descent | _____ | _____ |
-| Learning Rate | _____ | _____ |
-| Batch Normalization | _____ | _____ |
-| Tokenization | _____ | _____ |
-| BPE (Byte-Pair Encoding) | _____ | _____ |
-| One-Hot Encoding | _____ | _____ |
-| Word Embedding | _____ | _____ |
-| Word2Vec (Skip-gram/CBOW) | _____ | _____ |
-| RNN | _____ | _____ |
-| LSTM | _____ | _____ |
-| GRU | _____ | _____ |
-| Vanishing Gradient | _____ | _____ |
+| TensorBoard | Tensorflow tool that shows graphs of model processes over time | Visualizing model loss, accuracy, and performance|
+| Autoencoder | Process of denoising and shrinking an image to feature maps | Analyzing features in large images |
+| Reconstruction Loss | An image getting blurry / losing some features when it is decoded | Happens when decoding images |
+| Latent Space | A lower dimensional representation of high dimensional data | Representing embeddings or other high dimensional graphs |
+| Backpropagation | Moving back through a model in order to see how much each weight and bias contributed to results | Analyzing and modifying individual eights and biases for fine tuning |
+| Gradient Descent | Used to find the minimum value and minimize error | _____ |
+| Learning Rate | How fast a model learns / is adjusted at each step | Very important hyperparameter in every model |
+| Batch Normalization | Centers data around a mean of zero to stabilize data | Keeps gradients stable and and speeds up convergence, especially for larger models |
+| Tokenization | The process of grouping together characters in LLMs | Basically anytime human language is being analyzed |
+| BPE (Byte-Pair Encoding) | Tokenization done by grouping together characters based on how frequently they are adjacent | Smaller vocabulary and can handle unknown words |
+| One-Hot Encoding | Creates a true-false vector that includes a value for every word | Very large vocabulary size, very high dimensional space, not really great |
+| Word Embedding | Embedding values to show how related each word is to each other word | Reduces dimensionality and gets rid of mostly zeros |
+| Word2Vec (Skip-gram/CBOW) | Algorithm that creates vectors from to represent words | Provides efficient word embeddings at the cost of context |
+| RNN | Recurrent neural network - feeds output back into a hidden layer | When you need to preserve context |
+| LSTM | Long term short memory - neural network that includes gates to select what memory to keep | Allows the model to handle more context and run for longer |
+| GRU | Acts as basically a middle ground between simple RNNs and LSTMs | _____ |
+| Vanishing Gradient | Problem where gradients become extremely small, essentially negligible, over time | Happens during backpropagation |
 | Sequence Masking | _____ | _____ |
-| Early Stopping | _____ | _____ |
-| Dropout | _____ | _____ |
+| Early Stopping | The act of a model stopping early when loss and validation loss start to diverge | Basically any time you want a good model |
+| Dropout | Killing / Deactivating random neurons during training | Reduces over-fitting by reducing the amount of very intense weights |
 | L1 Regularization | _____ | _____ |
 | L2 Regularization | _____ | _____ |
 | Data Augmentation | _____ | _____ |
@@ -58,53 +58,55 @@ This week covered _____. By the end, trainees can:
 
 | Optimizer | Pros | Cons | Best For |
 |-----------|------|------|----------|
-| SGD | _____ | _____ | _____ |
-| Adam | _____ | _____ | _____ |
-| RMSprop | _____ | _____ | _____ |
+| SGD | More accurate, less divergence | Takes more time | Stability, precision, using momentum |
+| Adam | Very fast, quick convergence| Much more likely to overfit | General prototyping, fast learning |
+| RMSprop | </li><li> Automatically adjusts learning rates </li><li> Works well with non-stationary objectives </li><li> Handles sparse gradients effectively | _____ | _____ |
 
 ### Text Encoding Methods
 
 | Method | Pros | Cons | Best For |
 |--------|------|------|----------|
-| One-Hot Encoding | _____ | _____ | _____ |
-| Word Embeddings | _____ | _____ | _____ |
-| Pretrained Embeddings | _____ | _____ | _____ |
+| One-Hot Encoding | No unknown words, highly supported | Very high dimensionality, 99.9% zeros | limited data and unordered features |
+| Word Embeddings | Retains context between words / meaning | Out of vocabulary problem | Finding semantic similarity and general text analysis |
+| Pretrained Embeddings | Reduced cost and resources | Limited use cases / non specific | Using languages that the embedding has been pretrained on |
 
 ### Sequential Models
 
 | Architecture | Pros | Cons | Best For |
 |--------------|------|------|----------|
-| Simple RNN | _____ | _____ | _____ |
-| LSTM | _____ | _____ | _____ |
-| GRU | _____ | _____ | _____ |
+| Simple RNN | Fewer parameters, fast to train, simple architecture | Suffers from vanishing gradients, poor long-term memory | Short sequences, simple temporal patterns |
+| LSTM | Strong long-term memory via gates, handles vanishing gradients well | More parameters, slower training, higher compute | Long sequences, language modeling, time-series with long dependencies |
+| GRU | Fewer parameters than LSTM, faster training, good performance | Slightly less expressive than LSTM | Medium-length sequences, when speed and performance trade-off is needed |
+
+
 
 ### Regularization Techniques
 
 | Technique | Pros | Cons | Best For |
 |-----------|------|------|----------|
-| Dropout | _____ | _____ | _____ |
-| L1 Regularization | _____ | _____ | _____ |
-| L2 Regularization | _____ | _____ | _____ |
-| Early Stopping | _____ | _____ | _____ |
+| Dropout | Reduces overfitting, easy to apply | Slower learning | Deep neural networks |
+| L1 Regularization | Creates sparse weights, feature selection | Harder optimization | Models needing sparsity |
+| L2 Regularization | Keeps weights small, stabilizes training | Does not remove features | Most neural networks |
+| Early Stopping | Simple implementation, prevents overfitting| Requires validation data | Any model |
 
 ### Attention vs RNN
 
 | Aspect | RNN-based | Attention-based | Best For |
 |--------|-----------|-----------------|----------|
-| Long-range dependencies | _____ | _____ | _____ |
-| Training speed | _____ | _____ | _____ |
-| Interpretability | _____ | _____ | _____ |
-| Memory efficiency | _____ | _____ | _____ |
+| Long-range dependencies | Struggles, fades over time  | Direct Connections Between Tokens | Long Sequences, Context Heavy Tasks|
+| Training speed | Step By Step (Slower)| Parallelizable (Faster)| Large Datasets, Speed Critical Tasks|
+| Interpretability | Hidden States| Weights Interpretable| Explainable NLP|
+| Memory efficiency | Moderate| Memory Intensive| Limited Resources = RNN Could Be Better|
 
 ### Transformer Architectures
 
 | Architecture | Pros | Cons | Best For |
 |--------------|------|------|----------|
-| Encoder-only (BERT) | _____ | _____ | _____ |
-| Decoder-only (GPT) | _____ | _____ | _____ |
-| Encoder-Decoder (T5) | _____ | _____ | _____ |
+| Encoder-only (BERT) | Strong understanding of context, bidirectional | Cannot generate text | Classification, QA |
+| Decoder-only (GPT) | Text generation, strong language modeling | Unidirectional context | Text generation, chatbots, code completion |
+| Encoder-Decoder (T5) | Flexible input-output mapping | High compute cost | Translation, summarization |
 
----
+—	
 
 ## When to Use What
 
@@ -112,25 +114,25 @@ This week covered _____. By the end, trainees can:
 
 | If you have... | And you need... | Then use... | Because... |
 |----------------|-----------------|-------------|------------|
-| Small vocabulary | Simplicity | _____ | _____ |
-| Large vocabulary | Semantic meaning | _____ | _____ |
-| Limited training data | Transfer learning | _____ | _____ |
+| Small vocabulary | Simplicity | __One-Hot___ | _____ |
+| Large vocabulary | Semantic meaning | __Embeddings___ | _____ |
+| Limited training data | Transfer learning | _Pretrained____ | _____ |
 
 ### Choosing a Sequential Model
 
 | If your sequences are... | And you need... | Then use... | Because... |
 |--------------------------|-----------------|-------------|------------|
-| Short (<10 tokens) | Simple architecture | _____ | _____ |
-| Long (50+ tokens) | Long-term memory | _____ | _____ |
-| Variable length | Efficient training | _____ | _____ |
+| Short (<10 tokens) | Simple architecture | __RNN___ | _____ |
+| Long (50+ tokens) | Long-term memory | __LSTM___ | _____ |
+| Variable length | Efficient training | __GRU___ | _____ |
 
 ### Handling Overfitting
 
 | If you observe... | Then try... | Because... |
 |-------------------|-------------|------------|
-| Train acc high, val acc low | _____ | _____ |
-| Large weight values | _____ | _____ |
-| Validation loss increasing | _____ | _____ |
+| Train acc high, val acc low | Drop Out | Reduces Overfitting (Randomly Disabling Neurons)|
+| Large weight values | L2 Regularization | Penalizes Large Weights, Stabilizes Training|
+| Validation loss increasing | Early Stopping | Stops Training Before Overfitting Occurs|
 
 ### Choosing Attention vs Transformer
 
@@ -149,10 +151,10 @@ This week covered _____. By the end, trainees can:
 
 ```python
 # Set up TensorBoard callback
-tensorboard_callback = tf.keras.callbacks._____(_____='./logs')
+tensorboard_callback = tf.keras.callbacks.Tensorboard(log_dir='./logs')
 
 # Launch TensorBoard (in terminal)
-# tensorboard --logdir=_____
+# tensorboard --logdir=’logs/subdir’
 ```
 
 ### Autoencoder Architecture (Monday)
@@ -160,14 +162,14 @@ tensorboard_callback = tf.keras.callbacks._____(_____='./logs')
 ```python
 # Encoder
 encoder = keras.Sequential([
-    layers.Dense(_____, activation='_____', input_shape=(_____,)),
-    layers.Dense(_____, activation='_____'),  # Latent space
+    layers.Dense(node_num, activation='relu', input_shape=(input_vvec_size,)),
+    layers.Dense(node_num, activation='relu'),  # Latent space
 ])
 
 # Decoder
 decoder = keras.Sequential([
-    layers.Dense(_____, activation='_____'),
-    layers.Dense(_____, activation='_____'),  # Reconstruct original
+    layers.Dense(node_num, activation='relu'),
+    layers.Dense(node_num, activation='relu'),  # Reconstruct original
 ])
 ```
 
@@ -179,17 +181,17 @@ with tf.GradientTape() as tape:
     predictions = model(x_train)
     loss = loss_fn(y_train, predictions)
 
-gradients = tape._____(loss, model._____)
-optimizer.apply_gradients(zip(gradients, model._____))
+gradients = tape.gradient(loss, model.trainable_variables)
+optimizer.apply_gradients(zip(gradients, model.trainable_variable))
 ```
 
 ### Batch Normalization (Tuesday)
 
 ```python
 model = keras.Sequential([
-    layers.Dense(64, activation='_____'),
-    layers._____(___),  # Add batch normalization
-    layers.Dense(32, activation='_____'),
+    layers.Dense(64, activation='relu'),
+    layers.BatchNormalization(),  # Add batch normalization
+    layers.Dense(32, activation='relu'),
 ])
 ```
 
@@ -197,13 +199,13 @@ model = keras.Sequential([
 
 ```python
 # Word-level tokenization
-tokenizer = _____()
+tokenizer =TokenizerType()
 tokenizer.fit_on_texts(texts)
-sequences = tokenizer._____(texts)
+sequences = tokenizer.texts_to_sequences(texts)
 
 # Access vocabulary
-vocab_size = len(tokenizer._____)
-word_index = tokenizer._____
+vocab_size = len(tokenizer.word_index)
+word_index = tokenizer.word_index
 ```
 
 ### BPE/Subword Tokenization (Wednesday)
@@ -219,12 +221,12 @@ word_index = tokenizer._____
 ### Word2Vec Models (Wednesday)
 
 ```python
-# Skip-gram: Predicts _____ words from _____ word
-# CBOW: Predicts _____ word from _____ words
+# Skip-gram: Predicts context words from target word
+# CBOW: Predicts target word from context words
 
 # Word arithmetic
-# king - man + woman ≈ _____
-# paris - france + italy ≈ _____
+# king - man + woman ≈ queen
+# paris - france + italy ≈ rome
 ```
 
 ### Word Embeddings (Wednesday)
@@ -232,9 +234,9 @@ word_index = tokenizer._____
 ```python
 # Keras Embedding layer
 model.add(layers.Embedding(
-    input_dim=_____,      # Vocabulary size
-    output_dim=_____,     # Embedding dimension
-    input_length=_____    # Sequence length
+    input_dim=vocab_size,      # Vocabulary size
+    output_dim=dim,     # Embedding dimension
+    input_length=sequence_length    # Sequence length
 ))
 ```
 
@@ -251,9 +253,10 @@ model.add(layers.LSTM(units=_____, return_sequences=_____))
 ### Sequence Padding (Thursday)
 
 ```python
-from tensorflow.keras.preprocessing.sequence import _____
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-padded = _____(sequences, maxlen=_____, padding='_____', truncating='_____')
+padded = pad_sequences(sequences, maxlen=100, padding='post', truncating='post')
+
 ```
 
 ### Sequence Masking (Thursday)
@@ -360,17 +363,17 @@ class TransformerEncoderBlock(keras.layers.Layer):
             key_dim=d_model // num_heads
         )
         self.ffn = keras.Sequential([
-            layers.Dense(_____, activation='_____'),  # Expand (typically 4x d_model)
-            layers.Dense(_____),                       # Project back to d_model
+            layers.Dense(ff_dim, activation='__relu___'),  # Expand (typically 4x d_model)
+            layers.Dense(d_model),                       # Project back to d_model
         ])
-        self.layernorm1 = layers._____()
-        self.layernorm2 = layers._____()
+        self.layernorm1 = layers.LayerNormalization()
+        self.layernorm2 = layers.LayerNormalization()
     
     def call(self, x):
         attn_output = self.attention(x, x)
-        x = self.layernorm1(x + _____)  # Residual connection
+        x = self.layernorm1(x + attn_output)  # Residual connection
         ffn_output = self.ffn(x)
-        return self.layernorm2(x + _____)  # Residual connection
+        return self.layernorm2(x + ffn_output)  # Residual connection
 ```
 
 ### Positional Encoding (Friday)
@@ -386,8 +389,8 @@ d_model = 512
 # Token embedding + position embedding
 token_embed = layers.Embedding(vocab_size, d_model)(inputs)
 positions = tf.range(max_seq_len)
-pos_embed = layers.Embedding(_____, _____)(positions)
-final_embed = token_embed + _____
+pos_embed = layers.Embedding(max_seq_len, d_model)(positions)
+final_embed = token_embed + pos_embed
 ```
 
 ---
@@ -422,13 +425,24 @@ final_embed = token_embed + _____
 ∂L/∂w = ∂L/∂a × ∂a/∂z × ∂z/∂w
 
 Where:
-- L = _____ (loss function)
-- a = _____ (activation output)
-- z = _____ (weighted sum before activation)
-- w = _____ (weight being updated)
+- L = A scalar value that measures how wrong the model’s prediction (loss function)
+- a = The output of a neuron after applying the activation function (activation output)
+- z = The linear combination of inputs and weights before activation(weighted sum before activation)
+- w = A trainable parameter controlling the influence of an input (weight being updated)
+
+∂L/∂a
+ → How much does the loss change if the neuron’s output changes?
+
+∂a/∂z
+ → How sensitive is the activation function?
+ (e.g., ReLU, sigmoid, tanh)
+
+∂z/∂w
+ → How much does the weighted sum change if a weight changes?
 
 Forward:  Input → z = Σ(w·x) + b → a = activation(z) → Output → Loss
-Backward: Loss → ∂L/∂a → ∂a/∂z → ∂z/∂w → _____ (weight update)
+Backward: Loss → ∂L/∂a → ∂a/∂z → ∂z/∂w → ∂L/∂w (weight update)
+ w_new = w_old − α × ∂L/∂w
 ```
 
 ### Gradient Descent Update
@@ -436,18 +450,22 @@ Backward: Loss → ∂L/∂a → ∂a/∂z → ∂z/∂w → _____ (weight updat
 w_new = w_old - α × ∂L/∂w
 
 Where:
-- α = _____ (learning rate)
-- ∂L/∂w = _____ (gradient of loss w.r.t. weight)
+- α =Controls how big each update step is: Too large → training diverges, Too small → training is very slow (learning rate)
+- ∂L/∂w = Gradient: direction and magnitude of steepest loss increase (gradient of loss w.r.t. weight)
+
 ```
 
 ### Momentum Update (SGD with Momentum)
 ```
-v_t = β × v_{t-1} + (1 - β) × _____
-w_new = w_old - α × _____
+v_t = β × v_{t-1} + (1 - β) × ∂L/∂w
+w_new = w_old - α × v_t
 
 Where:
-- β = momentum coefficient (typically _____)
+- β = momentum coefficient (typically 0.9)
 - v = velocity (accumulated gradient)
+- ∂L/∂w = current gradient of the loss with respect to weights
+- α = learning rate
+
 ```
 
 ### L2 Regularization Loss
@@ -455,25 +473,27 @@ Where:
 Total Loss = Original Loss + λ × Σ(w²)
 
 Where:
-- λ = _____ (regularization strength)
-- Σ(w²) = _____ (sum of squared weights)
+- λ = hyperparameter that controls how strongly a model is penalized for having large or complex weights during training (regularization strength)
+- Σ(w²) = single number that measures how large all the model’s weights are overall (sum of squared weights)
 ```
 
 ### Dropout (Training vs Inference)
 ```
 Training:   output = input × mask / (1 - p)
-Inference:  output = input × _____
+Inference:  output = input × 1
 
 Where:
-- p = _____ (dropout probability)
-- mask = random binary mask (1s and 0s)
+- p = % of neurons dropped (dropout probability)
+- mask = random binary mask (keep 1s and drop 0s)
 ```
 
 ### Embedding Lookup
 ```
-Vocabulary Size: V = _____
-Embedding Dim:   D = _____
+Vocabulary Size: V = number of unique tokens
+Embedding Dim:   D = vector size
 Embedding Matrix: V × D
 
-Lookup: word_index → row _____ of embedding matrix → vector of dim D
+Lookup: word_index → row i of embedding matrix → vector of dim D
 ```
+
+
